@@ -1,0 +1,47 @@
+src_max_length: 512
+tgt_max_length: 6 
+batch_size: 32 
+device: 3 
+tgt_vocab_size: 145
+src_pad_idx: 0
+tgt_pad_idx: 0
+tgt_bos: 1
+tgt_eos: 2
+train_src: "../../data/wos/train.src" 
+train_tgt: "../../data/wos/organized_level_wise/train.tgt"  
+val_src: "../../data/wos/val.src"
+val_tgt: "../../data/wos/organized_level_wise/val.tgt"
+test_src: "../../data/wos/test.src"
+test_tgt: "../../data/wos/organized_level_wise/test.tgt"
+label_file: "../../data/wos/topics.json"
+hiera_file: "../../data/wos/pseudo_hiera.json"
+text_pseudo_file: "../../data/wos/label_map.pkl"
+#Training hyperparameters
+num_epochs: 100
+#Model hyperparameters
+embedding_size: 768
+num_heads: 8
+num_decoder_layers: 2
+dropout: 0.2 
+forward_expansion: 4 
+encoder_model: "roberta-base" #"bert-base-uncased"
+trained_model_file: "" 
+model_file:  "models/wos/MODEL_CHECKPOINT.pt"
+result_file: "results/wos/RESUTL_FILE.txt" 
+#logging
+wandb: False
+log_file: "logs/wos/LOG_FILE.txt" 
+#extra
+lr_patience: 3
+patience: 10
+enc_lr: 5e-5
+dec_lr: 3e-4 
+accumulation_steps: 2
+continue_training: False
+shuffle: False
+pre_train_mask: True
+#this parameter is used to fix the input to the encoder
+label_smoothing: 0.1 
+gamma: 2
+random_seed: 42 #11 #912 #211 #1007 
+Desc: "Experiment Description"

@@ -1,0 +1,43 @@
+src_max_length: 512
+tgt_max_length: 22 #17 labels and 2 are bos, eos
+batch_size: 32
+device: 2
+tgt_vocab_size: 107
+src_pad_idx: 0
+tgt_pad_idx: 0
+tgt_bos: 1
+tgt_eos: 2
+train_src: "../data/rcv1/train.src" 
+train_tgt: "../data/rcv1/organized_level_wise/train.tgt" 
+val_src: "../data/rcv1/valid.src"
+val_tgt: "../data/rcv1/organized_level_wise/valid.tgt"
+test_src: "../data/rcv1/test.src"
+test_tgt: "../data/rcv1/organized_level_wise/test.tgt"
+label_file: "../data/rcv1/topics.json"
+hiera_file: "../data/rcv1/pseudo_hiera.json"
+text_pseudo_file: "../data/rcv1/label_map.pkl"
+#Training hyperparameters
+num_epochs: 100
+#Model hyperparameters
+embedding_size: 768
+num_heads: 8
+num_decoder_layers: 2
+dropout: 0.2 
+forward_expansion: 4 
+encoder_model: "xlnet-base-cased" #"roberta-base"
+trained_model_file: ""
+model_file: "models/rcv/MODEL_CHECKPOINT.pt"
+result_file: "results/rcv/RESULT_FILE.txt" 
+log_file: "logs/rcv/LOG_FILE.txt"
+lr_patience: 3
+patience: 10
+enc_lr: 5e-5
+dec_lr: 3e-4
+accumulation_steps: 2
+continue_training: False
+shuffle: False
+pre_train_mask: True
+label_smoothing: 0.1
+gamma: 2
+random_seed: 42 #47 #11 #912 #211 #1007 
+Desc: "Experiment Description"
